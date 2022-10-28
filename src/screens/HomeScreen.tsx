@@ -1,11 +1,38 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {colors} from '../theme/colors';
+import {FlatList, StyleSheet, View} from 'react-native';
+import data from '../../db.json';
+import {ITodo} from '../types/Todo';
+import TodoListItem from '../components/TodoListItem';
+
+const todos = data.todos as ITodo[];
 
 const HomeScreen = () => {
+  const renderItem = ({item}: {item: ITodo}) => {
+    console.log('item render');
+
+    const onPressEditItem = () => {
+      console.log('item edit', item.id);
+    };
+    const onPressRemoveItem = () => {
+      console.log('item remove', item.id);
+    };
+
+    return (
+      <TodoListItem
+        todo={item}
+        onPressEdit={onPressEditItem}
+        onPressRemove={onPressRemoveItem}
+      />
+    );
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>HOME SCREEN</Text>
+      <FlatList
+        data={todos}
+        renderItem={renderItem}
+        ItemSeparatorComponent={() => <View style={styles.separator} />}
+      />
     </View>
   );
 };
@@ -15,8 +42,8 @@ const styles = StyleSheet.create({
     marginTop: 32,
     paddingHorizontal: 24,
   },
-  text: {
-    color: colors.primaryDark,
+  separator: {
+    height: 10,
   },
 });
 

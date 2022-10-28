@@ -5,7 +5,7 @@ import Button from '../components/Button';
 import CreateScreen from '../screens/CreateScreen';
 import HomeScreen from '../screens/HomeScreen';
 import {colors} from '../theme/colors';
-import {HomeScreenNavProp, RootStackParamList} from './types';
+import {HomeScreenNavProp, RootStackParamList} from '../types/Nav';
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -25,6 +25,8 @@ export const RootNavigator = () => {
             <Button
               title="ADD"
               onPress={() => navigation.navigate('CreateScreen')}
+              style={styles.button}
+              textStyle={styles.buttonText}
             />
           ),
           headerTitleStyle: styles.headerTitleStyle,
@@ -45,4 +47,6 @@ const styles = StyleSheet.create({
     color: colors.dark,
   },
   screenStyle: {backgroundColor: colors.white},
+  button: {backgroundColor: colors.white},
+  buttonText: {color: colors.dark},
 });
