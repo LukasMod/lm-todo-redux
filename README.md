@@ -20,6 +20,8 @@ or
   
 4. start localtunnel to allow rn to communicate with local json server (need localtunnel package)
 
-  ```yarn json-server --port 8000 ./db.json --watch```
+  ```yarn json-server --port 8000 ./db.json --watch``` 
+  
+  open given new address and click continue there
   
 5. replace baseURL in src/services/Api.ts with new address from localtunnel
