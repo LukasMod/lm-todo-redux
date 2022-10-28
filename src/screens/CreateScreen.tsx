@@ -1,11 +1,13 @@
 import React, {useState} from 'react'
-import {StyleSheet, TextInput, View} from 'react-native'
+import {ActivityIndicator, StyleSheet, TextInput, View} from 'react-native'
 import Button from '../components/Button'
+import {createTodo} from '../services/TodoApi'
 import {colors} from '../theme/colors'
 import {ITodo} from '../types/Todo'
 
 const CreateScreen = () => {
   const [text, setText] = useState('Test todo')
+  const [loading, setLoading] = useState(false)
 
   const onPressAdd = async () => {
     const newTodo: ITodo = {
@@ -14,9 +16,9 @@ const CreateScreen = () => {
       date: new Date().toISOString(),
       done: false,
     }
-
-    // api call newTodo
-    console.log('TEST newTodo', newTodo)
+    setLoading(true)
+    await createTodo(newTodo)
+    setLoading(false)
 
     setText('')
   }
@@ -30,7 +32,11 @@ const CreateScreen = () => {
         placeholder="Type your message..."
       />
       <View style={styles.buttonsContainer}>
-        <Button title="ADD TODO" onPress={onPressAdd} />
+        {loading ? (
+          <ActivityIndicator color={colors.primary} size="large" />
+        ) : (
+          <Button title="ADD TODO" onPress={onPressAdd} />
+        )}
       </View>
     </View>
   )

@@ -21,12 +21,12 @@ const TodoListItem = ({todo, onPressRemove, onPressEdit}: ITodoListItem) => {
         {format(new Date(todo.date), 'HH:mm MM/dd/yyyy')}
       </Text>
       <View style={styles.buttonsContainer}>
-        <Button
+        {/* <Button
           title="EDIT"
           onPress={onPressEdit}
           disabled={todo.done}
           style={todo.done && styles.buttonDone}
-        />
+        /> */}
         <Button
           title="DONE"
           onPress={onPressRemove}
@@ -56,7 +56,8 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     marginHorizontal: 20,
     marginTop: 10,
   },

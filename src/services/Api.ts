@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const Api = axios.create({
-  baseURL: 'https://kind-cat-73.loca.lt',
+  baseURL: 'https://0bd3-5-172-233-232.eu.ngrok.io/',
   timeout: 1000,
   headers: {accept: 'application/json'},
 })
