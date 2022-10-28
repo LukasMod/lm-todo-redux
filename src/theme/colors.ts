@@ -9,4 +9,4 @@ export const colors = {
   dark: '#34495e',
   primary: '#2ecc71',
   primaryDark: '#27ae60',
-};
+}

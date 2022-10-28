@@ -1,14 +1,14 @@
-import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
-import {colors} from '../theme/colors';
-import {ITodo} from '../types/Todo';
-import Button from './Button';
-import {format} from 'date-fns';
+import React from 'react'
+import {View, StyleSheet, Text} from 'react-native'
+import {colors} from '../theme/colors'
+import {ITodo} from '../types/Todo'
+import Button from './Button'
+import {format} from 'date-fns'
 
 interface ITodoListItem {
-  todo: ITodo;
-  onPressRemove: () => void;
-  onPressEdit: () => void;
+  todo: ITodo
+  onPressRemove: () => void
+  onPressEdit: () => void
 }
 
 const TodoListItem = ({todo, onPressRemove, onPressEdit}: ITodoListItem) => {
@@ -35,10 +35,10 @@ const TodoListItem = ({todo, onPressRemove, onPressEdit}: ITodoListItem) => {
         />
       </View>
     </View>
-  );
-};
+  )
+}
 
-export default TodoListItem;
+export default TodoListItem
 
 const styles = StyleSheet.create({
   container: {
@@ -75,4 +75,4 @@ const styles = StyleSheet.create({
     color: colors.dark,
     backgroundColor: colors.gray2,
   },
-});
+})

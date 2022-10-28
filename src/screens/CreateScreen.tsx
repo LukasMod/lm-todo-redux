@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
-import {StyleSheet, TextInput, View} from 'react-native';
-import Button from '../components/Button';
-import {colors} from '../theme/colors';
-import {ITodo} from '../types/Todo';
+import React, {useState} from 'react'
+import {StyleSheet, TextInput, View} from 'react-native'
+import Button from '../components/Button'
+import {colors} from '../theme/colors'
+import {ITodo} from '../types/Todo'
 
 const CreateScreen = () => {
-  const [text, setText] = useState('Test todo');
+  const [text, setText] = useState('Test todo')
 
   const onPressAdd = async () => {
     const newTodo: ITodo = {
@@ -13,13 +13,13 @@ const CreateScreen = () => {
       title: text,
       date: new Date().toISOString(),
       done: false,
-    };
+    }
 
     // api call newTodo
-    console.log('TEST newTodo', newTodo);
+    console.log('TEST newTodo', newTodo)
 
-    setText('');
-  };
+    setText('')
+  }
 
   return (
     <View style={styles.container}>
@@ -33,8 +33,8 @@ const CreateScreen = () => {
         <Button title="ADD TODO" onPress={onPressAdd} />
       </View>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -56,6 +56,6 @@ const styles = StyleSheet.create({
     borderColor: colors.gray3,
     borderWidth: StyleSheet.hairlineWidth,
   },
-});
+})
 
-export default CreateScreen;
+export default CreateScreen

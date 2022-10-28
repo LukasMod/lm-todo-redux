@@ -1,13 +1,13 @@
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import React from 'react';
-import {StyleSheet} from 'react-native';
-import Button from '../components/Button';
-import CreateScreen from '../screens/CreateScreen';
-import HomeScreen from '../screens/HomeScreen';
-import {colors} from '../theme/colors';
-import {HomeScreenNavProp, RootStackParamList} from '../types/Nav';
+import {createNativeStackNavigator} from '@react-navigation/native-stack'
+import React from 'react'
+import {StyleSheet} from 'react-native'
+import Button from '../components/Button'
+import CreateScreen from '../screens/CreateScreen'
+import HomeScreen from '../screens/HomeScreen'
+import {colors} from '../theme/colors'
+import {HomeScreenNavProp, RootStackParamList} from '../types/Nav'
 
-const RootStack = createNativeStackNavigator<RootStackParamList>();
+const RootStack = createNativeStackNavigator<RootStackParamList>()
 
 export const RootNavigator = () => {
   return (
@@ -38,8 +38,8 @@ export const RootNavigator = () => {
         options={{title: 'Create Todo'}}
       />
     </RootStack.Navigator>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   headerStyle: {backgroundColor: colors.white},
@@ -49,4 +49,4 @@ const styles = StyleSheet.create({
   screenStyle: {backgroundColor: colors.white},
   button: {backgroundColor: colors.white},
   buttonText: {color: colors.dark},
-});
+})

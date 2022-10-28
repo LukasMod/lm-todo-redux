@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {
   Pressable,
   PressableProps,
@@ -7,14 +7,14 @@ import {
   Text,
   TextStyle,
   ViewStyle,
-} from 'react-native';
-import {colors} from '../theme/colors';
+} from 'react-native'
+import {colors} from '../theme/colors'
 
 interface IButton extends PressableProps {
-  title: string;
-  onPress: () => void;
-  style?: StyleProp<ViewStyle>;
-  textStyle?: StyleProp<TextStyle>;
+  title: string
+  onPress: () => void
+  style?: StyleProp<ViewStyle>
+  textStyle?: StyleProp<TextStyle>
 }
 
 const Button = ({title, onPress, style, textStyle, ...props}: IButton) => {
@@ -26,10 +26,10 @@ const Button = ({title, onPress, style, textStyle, ...props}: IButton) => {
       android_ripple={{color: colors.primary}}>
       <Text style={[styles.text, textStyle]}>{title}</Text>
     </Pressable>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button
 
 const styles = StyleSheet.create({
   container: {
@@ -41,4 +41,4 @@ const styles = StyleSheet.create({
   text: {
     color: colors.white,
   },
-});
+})
