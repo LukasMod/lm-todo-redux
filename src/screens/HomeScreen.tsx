@@ -4,26 +4,15 @@ import {ITodo} from '../types/Todo'
 import TodoListItem from '../components/TodoListItem'
 import {finishTodo, getTodos} from '../services/TodoApi'
 import {colors} from '../theme/colors'
-// import data from '../../db.json'
-
-// const todos = data.todos as ITodo[]
+import {useAppDispatch, useAppSelector} from '../store/hooks'
+import {todoActions} from '../store/features/todo/todoSlice'
 
 const HomeScreen = () => {
-  const [todos, setTodos] = useState<ITodo[]>([])
-  const [loading, setLoading] = useState(false)
-
-  const getNewTodos = async () => {
-    setLoading(true)
-    const newTodos = await getTodos()
-    setLoading(false)
-
-    if (typeof newTodos !== 'string') {
-      setTodos(newTodos)
-    }
-  }
+  const dispatch = useAppDispatch()
+  const {data: todos, isPending: loading} = useAppSelector(state => state.todos)
 
   useEffect(() => {
-    getNewTodos()
+    dispatch(todoActions.fetch())
   }, [])
 
   const renderItem = ({item}: {item: ITodo}) => {
@@ -45,7 +34,11 @@ const HomeScreen = () => {
   }
 
   if (loading && !todos.length) {
-    return <ActivityIndicator color={colors.primary} size="large" />
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator color={colors.primary} size="large" />
+      </View>
+    )
   }
 
   return (
@@ -54,7 +47,7 @@ const HomeScreen = () => {
         data={todos}
         renderItem={renderItem}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
-        onRefresh={getNewTodos}
+        onRefresh={() => dispatch(todoActions.fetch())}
         refreshing={loading}
       />
     </View>
@@ -65,6 +58,11 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 32,
     paddingHorizontal: 24,
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   separator: {
     height: 10,

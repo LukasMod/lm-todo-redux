@@ -9,3 +9,9 @@ export const handleAxiosError = (apiErrorName: string, error: unknown) => {
     return 'An unexpected error occurred'
   }
 }
+
+export function assertIsError(error: unknown): asserts error is string {
+  if (!(error instanceof Error)) {
+    throw error
+  }
+}

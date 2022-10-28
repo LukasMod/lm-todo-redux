@@ -1,6 +1,6 @@
 import {AxiosResponse} from 'axios'
 import {ITodo} from '../types/Todo'
-import {handleAxiosError} from '../utils/axiosError'
+import {handleAxiosError} from '../utils/errors'
 import Api from './Api'
 
 export const getTodos = async () => {
